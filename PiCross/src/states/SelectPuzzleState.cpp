@@ -118,7 +118,7 @@ void SelectPuzzleState::populatePuzzle(uint16_t puzzleIndex) {
   uint8_t maxSeriesRow = 0;
   uint8_t maxSeriesCol = 0;
 
-  const uint8_t *puzzle = pgm_read_word_near(&Puzzles::puzzles[puzzleIndex]);
+  const uint8_t *puzzle = pgm_read_ptr(&Puzzles::puzzles[puzzleIndex]);
 
   uint8_t width = pgm_read_byte(&puzzle[idx++]);
   uint8_t height = pgm_read_byte(&puzzle[idx++]);
@@ -273,7 +273,7 @@ void SelectPuzzleState::render(StateMachine & machine) {
 
     uint8_t xPos = x - lowerLimit;
 
-    const uint8_t *puzzle = pgm_read_word_near(&Puzzles::puzzles[(puzzleRange * 25) + x]);
+    const uint8_t *puzzle = pgm_read_ptr(&Puzzles::puzzles[(puzzleRange * 25) + x]);
 
     uint8_t width = pgm_read_byte(&puzzle[0]);
     uint8_t height = pgm_read_byte(&puzzle[1]);

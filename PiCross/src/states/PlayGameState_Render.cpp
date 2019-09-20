@@ -165,7 +165,7 @@ void PlayGameState::render(StateMachine & machine) {
 
     if (this->counter == 64) {
 
-      const uint8_t *puzzle = pgm_read_word_near(&Puzzles::puzzles[this->puzzle.getPuzzleIndex()]);   
+      const uint8_t *puzzle = pgm_read_ptr(&Puzzles::puzzles[this->puzzle.getPuzzleIndex()]);   
       uint8_t width = pgm_read_byte(&puzzle[0]);
       uint8_t height = pgm_read_byte(&puzzle[1]);
 
