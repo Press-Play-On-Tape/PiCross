@@ -118,6 +118,8 @@ void PlayGameState::render(StateMachine & machine) {
   // Render row headers ..
 
   for (uint8_t y = 0; y < size; y++) {
+      // Serial.print(y);
+      // Serial.print(": ");
 
     if (this->puzzle.isRowMatch(y)) {
 
@@ -133,18 +135,47 @@ void PlayGameState::render(StateMachine & machine) {
 
     }
     
-    uint8_t largerThan10 = 0;
+    uint8_t xOffset = this->xOffset;
 
     for (uint8_t x = 0; x < Constants::NumberOfNumbers; x++) {
-      
+
       uint8_t val = this->puzzle.getRow(y, x);
 
       if (val != 0) {
 
-        if (val >= 10) largerThan10++;
+        switch (val) {
 
-        font3x5.setCursor(1 + (x * 5) - (val == 1 ? 1 : 0) - this->xOffset, this->marginTop + (y * Constants::GridWidthY) + 1 - this->yOffset);
-        font3x5.print(val);
+          case 1:
+            font3x5.setCursor(xOffset - 1, this->marginTop + (y * Constants::GridWidthY) + 1 - this->yOffset);
+            xOffset = xOffset + 4;
+            font3x5.print(val);
+            break;
+
+          case 2 ... 9:
+            font3x5.setCursor(xOffset, this->marginTop + (y * Constants::GridWidthY) + 1 - this->yOffset);
+            font3x5.print(val);
+            xOffset = xOffset + 5;
+            break;
+
+          case 10 ... 20:
+            font3x5.setCursor(xOffset - 1, this->marginTop + (y * Constants::GridWidthY) + 1 - this->yOffset);
+            font3x5.print("1");
+            xOffset = xOffset + 3;
+
+            font3x5.setCursor(xOffset, this->marginTop + (y * Constants::GridWidthY) + 1 - this->yOffset);
+            if (val % 10 == 1) {
+              xOffset = xOffset + 3;
+            }
+            else {
+              xOffset = xOffset + 5;
+            }
+
+            font3x5.print(val % 10);
+
+          default: break;
+
+        }
+
       }
   
     }

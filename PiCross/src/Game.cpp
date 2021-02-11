@@ -32,7 +32,7 @@ void Game::setup(void) {
 	arduboy.systemButtons();
 	arduboy.audio.begin();
 	arduboy.setFrameRate(50);
-  arduboy.initRandomSeed();
+  //arduboy.initRandomSeed();
 	EEPROM_Utils::initEEPROM(false);
 
 	this->currentState = GameStateType::SplashScreen; 
