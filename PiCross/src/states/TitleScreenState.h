@@ -9,7 +9,7 @@ class TitleScreenState : public GameState<GameContext, GameStateType> {
 
   private:
 
-    uint8_t restart = 0;
+    // uint8_t restart = 0;
     uint8_t counter = 0;
 
   public:	

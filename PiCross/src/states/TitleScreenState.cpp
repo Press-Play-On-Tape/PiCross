@@ -20,25 +20,25 @@ void TitleScreenState::activate(StateMachine & machine) {
 void TitleScreenState::update(StateMachine & machine) {
 
 	auto & arduboy = machine.getContext().arduboy;
-  auto justPressed = arduboy.justPressedButtons();
-  auto pressed = arduboy.pressedButtons();
+	auto justPressed = arduboy.justPressedButtons();
+	auto pressed = arduboy.pressedButtons();
 
 
 	// Restart ?
 
-	if (pressed & DOWN_BUTTON) {
+	// if (pressed & DOWN_BUTTON) {
 
-		if (restart < UPLOAD_DELAY) {
-			restart++;
-		}
-		else {
-			arduboy.exitToBootloader();
-		}
+	// 	if (restart < UPLOAD_DELAY) {
+	// 		restart++;
+	// 	}
+	// 	else {
+	// 		arduboy.exitToBootloader();
+	// 	}
 
-	}
-	else {
-		restart = 0;
-	}
+	// }
+	// else {
+	// 	restart = 0;
+	// }
 
 
 	// Handle other input ..
