@@ -175,10 +175,10 @@ void Font3x5::printChar(const char c, const int8_t x, int8_t y) {
   if (idx > -1) {
     
     if (_textColor == WHITE) {
-      SpritesB::drawSelfMasked(x, y, font_images, idx);
+      Sprites::drawSelfMasked(x, y, font_images, idx);
     }
     else {
-      SpritesB::drawErase(x, y, font_images, idx);
+      Sprites::drawErase(x, y, font_images, idx);
     }
 
   }
